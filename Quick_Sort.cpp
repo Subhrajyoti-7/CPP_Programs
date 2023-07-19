@@ -55,7 +55,8 @@ void quickSort(int arr[], int low, int high)
 // Driver Code
 int main()
 {
-    int arr[] = {10, 16, 8, 12, 15, 6, 3, 9, 5};
+    // int arr[] = {10, 16, 8, 12, 15, 6, 3, 9, 5};
+    int arr[] = {10, 15, 16, 17, 6};
     int N = sizeof(arr) / sizeof(arr[0]);
 
     // Function call

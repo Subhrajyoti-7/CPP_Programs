@@ -9,12 +9,15 @@ private:
     int arrSize;
 
 public:
-    int size()
+    QuickSort(int arrSize)
     {
-        cout << "How many numbers you want to enter : ";
-        cin >> arrSize;
+        this->arrSize = arrSize;
         arr = new int[arrSize];
-        return (arrSize);
+    }
+
+    ~QuickSort()
+    {
+        delete arr;
     }
 
     void getvalues()
@@ -31,25 +34,26 @@ public:
     int partition(int l, int r)
     {
         int pivot = arr[l];
-        int i = l, j = r;
+        int i = l, j = r + 1;
         while (i < j)
         {
             do
             {
                 i++;
-            } while (arr[i] <= pivot);
+            } while (arr[i] <= pivot && i <= j);
 
             do
             {
                 j--;
-            } while (arr[j] > pivot);
+            } while (arr[j] > pivot && j >= i);
+
             if (i < j)
             {
                 swap(arr[i], arr[j]);
             }
         }
 
-        swap(arr[j], arr[l]);
+        swap(arr[j], pivot);
         return (j);
     }
 
@@ -76,8 +80,11 @@ public:
 int main()
 {
     cout << "This program takes some numbers and sort them in ascending order." << endl;
-    QuickSort A;
-    int size = A.size();
+    cout << "How many numbers you want to enter : ";
+    int size;
+    cin >> size;
+
+    QuickSort A(size);
     A.getvalues();
     cout << "Your given numbers are :" << endl;
     cout << setw(10);

@@ -3,7 +3,7 @@ using namespace std;
 
 class AddSub
 {
-    int *mat;
+    int **mat;
     int row, col;
 
 public:
@@ -15,7 +15,7 @@ public:
         cout << "Enter the column size (n) : ";
         cin >> col;
 
-        mat = new int[row];
+        mat = new int *[row];
 
         for (int i = 0; i < row; i++)
         {
@@ -28,7 +28,7 @@ public:
             for (int j = 0; j < col; j++)
             {
                 cout << "Enter a number : ";
-                cin >> *((mat + i) + j);
+                cin >> mat[i][j];
             }
         }
     }
@@ -40,13 +40,24 @@ public:
         {
             for (int j = 0; j < col; j++)
             {
-                result.mat[i][j] = *((mat + i) + j) + obj.*((mat + i) + j);
+                result.mat[i][j] = mat[i][j] + obj.mat[i][j];
             }
         }
         return result;
     }
 
-    friend AddSub operator-(AddSub obj1, AddSub obj2);
+    friend AddSub operator-(AddSub obj1, AddSub obj2)
+    {
+        AddSub result;
+        for (int i = 0; i < obj1.row; i++)
+        {
+            for (int j = 0; j < obj1.col; j++)
+            {
+                result.mat[i][j] = obj1.mat[i][j] - obj2.mat[i][j];
+            }
+        }
+        return (result);
+    }
 
     void show()
     {
@@ -54,26 +65,13 @@ public:
         {
             for (int j = 0; j < col; j++)
             {
-                cout << *((mat + i) + j) << " ";
+                cout << mat[i][j] << " ";
             }
             cout << endl;
         }
         cout << endl;
     }
 };
-
-AddSub AddSub::operator-(AddSub obj1, AddSub obj2)
-{
-    AddSub result;
-    for (int i = 0; i < row; i++)
-    {
-        for (int j = 0; j < col; j++)
-        {
-            result.*((mat + i) + j) = obj1.*((mat + i) + j) - obj2.*((mat + i) + j);
-        }
-    }
-    return (result);
-}
 
 int main()
 {
@@ -85,10 +83,12 @@ int main()
     cout << "Creating first matrix" << endl;
     cout << "---------------------" << endl;
     M1.assign();
+    M1.show();
 
     cout << "Creating first matrix" << endl;
     cout << "---------------------" << endl;
     M2.assign();
+    M2.show();
 
     A = M1 + M2;
     S = M1 - M2;

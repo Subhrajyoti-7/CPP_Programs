@@ -11,7 +11,7 @@ public:
         {
             if (i % a == 0 && i % b == 0)
             {
-                cout << "LCM = " << i << endl;
+                cout << "LCM = " << a * b / i << endl;
                 break;
             }
         }

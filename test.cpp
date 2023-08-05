@@ -25,10 +25,28 @@ public:
     }
 };
 
+class mul : public Number
+{
+    int a, b;
+
+public:
+    void Read(int a, int b)
+    {
+        this->a = a;
+        this->b = b;
+    }
+
+    void Result()
+    {
+        cout << "The addition is : " << a + b << endl;
+    }
+};
+
 int main()
 {
     Add A;
+    mul B;
     A.Read(3, 4);
-    A.Result();
+    // A.Result();
     return (0);
 }

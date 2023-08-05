@@ -30,21 +30,18 @@ public:
         }
     }
 
-    friend void sortArray(Sort A);
+    friend void sortArray(Sort);
 };
 
 void sortArray(Sort A)
 {
-    int third;
     for (int i = 0; i < A.size; i++)
     {
         for (int j = 0; j < A.size; j++)
         {
-            if (A.arr[j] < A.arr[i])
+            if (A.arr[i] > A.arr[j])
             {
-                third = A.arr[i];
-                A.arr[i] = A.arr[j];
-                A.arr[j] = third;
+                swap(A.arr[i], A.arr[j]);
             }
         }
     }

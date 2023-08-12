@@ -3,8 +3,7 @@ using namespace std;
 
 int main()
 {
-    int a = 10;
-    int b = 6;
-    cout << a ^ b;
+    cout << "a" << endl
+         << endl;
     return (0);
 }

@@ -77,11 +77,11 @@ int main()
 
     if (bins.search(key))
     {
-        cout << "The given number is present in the list" << endl;
+        cout << key << " is present in the list" << endl;
     }
     else
     {
-        cout << "The given number is not present in the list" << endl;
+        cout << key << " is not present in the list" << endl;
     }
 
     return (0);

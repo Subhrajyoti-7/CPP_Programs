@@ -1,33 +1,34 @@
 #include <iostream>
 using namespace std;
+
+void search(int arr[], int key, int l, int r)
+{
+    while (l <= r)
+    {
+        int mid = (l + r) / 2;
+        if (key > arr[mid])
+        {
+            r = mid - 1;
+        }
+        else if (key < arr[mid])
+        {
+            l = mid + 1;
+        }
+        else
+        {
+            cout << "The number is present in the list";
+            break;
+        }
+    }
+    if (l > r)
+    {
+        cout << "The number is not present in the list";
+    }
+}
+
 int main()
 {
-    int num;
-    int count;
-    int count1;
-    cout << "enter a number : ";
-    cin >> num;
-    int arr[num];
-    int freq[num];
-    int k = 0;
-    for (int i = 0; i < num; i++)
-    {
-        cin >> arr[i];
-    }
-    for (int i = 0; i < num; i++)
-    {
-        count = 0;
-        for (int j = 0; j < num; j++)
-        {
-            if (arr[j] == arr[i])
-            {
-                count++;
-            }
-        }
-
-        for (int i = 0; i < k; i++)
-        {
-            cout << freq[i] << " ";
-        }
-    }
+    int arr[5] = {5, 4, 3, 2, 1};
+    int key = 1;
+    search(arr, key, 0, 5);
 }

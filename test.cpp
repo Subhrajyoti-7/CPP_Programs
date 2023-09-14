@@ -1,8 +1,9 @@
 #include <iostream>
 using namespace std;
 
-void search(int arr[], int key, int l, int r)
+void search(int arr[], int size, int key)
 {
+    int l = 0, r = size - 1;
     while (l <= r)
     {
         int mid = (l + r) / 2;
@@ -30,5 +31,5 @@ int main()
 {
     int arr[5] = {5, 4, 3, 2, 1};
     int key = 1;
-    search(arr, key, 0, 5);
+    search(arr, 5, key);
 }
